@@ -5,16 +5,16 @@
 ## Start here
 
 - [Installation and behavior](https://github.com/unreasonable/eco-mcp/blob/main/README.md)
-- [Portable plugin manifest](https://github.com/unreasonable/eco-mcp/blob/main/plugin.json)
-- [MCP connection](https://github.com/unreasonable/eco-mcp/blob/main/mcp.json)
+- [Portable plugin manifest](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/plugin.json)
+- [MCP connection](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/mcp.json)
 - [Compatibility and validation](https://github.com/unreasonable/eco-mcp/blob/main/docs/compatibility.md)
 
 ## Agent Skills
 
-- [Find the right people](https://github.com/unreasonable/eco-mcp/blob/main/skills/find-the-right-people/SKILL.md)
-- [Follow up on commitments](https://github.com/unreasonable/eco-mcp/blob/main/skills/follow-up-on-commitments/SKILL.md)
-- [Prepare for your program](https://github.com/unreasonable/eco-mcp/blob/main/skills/prepare-for-your-program/SKILL.md)
-- [Request fundraising introductions](https://github.com/unreasonable/eco-mcp/blob/main/skills/request-fundraising-introductions/SKILL.md)
+- [Find the right people](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/find-the-right-people/SKILL.md)
+- [Follow up on commitments](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/follow-up-on-commitments/SKILL.md)
+- [Prepare for your program](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/prepare-for-your-program/SKILL.md)
+- [Request fundraising introductions](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/request-fundraising-introductions/SKILL.md)
 
 ## Access
 

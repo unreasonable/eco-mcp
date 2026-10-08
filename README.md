@@ -1,6 +1,6 @@
 # Unreasonable Eco
 
-![Unreasonable Eco](assets/eco-logo-0.1.2.png)
+![Unreasonable Eco](plugins/unreasonable-eco/assets/eco-logo-0.1.2.png)
 
 Connect Claude, ChatGPT, Codex, and other MCP clients to your Unreasonable community. Find people and ventures, follow up on offers of help, prepare for your program, and draft fundraising introduction requests using your Eco account's permissions.
 
@@ -25,7 +25,7 @@ To test a local checkout without installing it:
 
 ```sh
 git clone https://github.com/unreasonable/eco-mcp.git
-claude --plugin-dir ./eco-mcp
+claude --plugin-dir ./eco-mcp/plugins/unreasonable-eco
 ```
 
 ## Install in OpenAI clients
@@ -44,16 +44,16 @@ In a host with the skills loaded, invoke `$find-the-right-people`, `$follow-up-o
 
 ## Included workflows
 
-- [Find the right people](skills/find-the-right-people/SKILL.md): build a shortlist using profile evidence and explain each person's relevance.
-- [Follow up on commitments](skills/follow-up-on-commitments/SKILL.md): review offers made to you, prioritize follow-ups, and draft messages. Record changes only with your authorization.
-- [Prepare for your program](skills/prepare-for-your-program/SKILL.md): summarize program context, outstanding onboarding, schedule, and useful conversations.
-- [Request fundraising introductions](skills/request-fundraising-introductions/SKILL.md): assess Eco's funder recommendations and draft requests to the returned connectors. Record a request only after you confirm it was sent.
+- [Find the right people](plugins/unreasonable-eco/skills/find-the-right-people/SKILL.md): build a shortlist using profile evidence and explain each person's relevance.
+- [Follow up on commitments](plugins/unreasonable-eco/skills/follow-up-on-commitments/SKILL.md): review offers made to you, prioritize follow-ups, and draft messages. Record changes only with your authorization.
+- [Prepare for your program](plugins/unreasonable-eco/skills/prepare-for-your-program/SKILL.md): summarize program context, outstanding onboarding, schedule, and useful conversations.
+- [Request fundraising introductions](plugins/unreasonable-eco/skills/request-fundraising-introductions/SKILL.md): assess Eco's funder recommendations and draft requests to the returned connectors. Record a request only after you confirm it was sent.
 
 Try “Who in the community could help with water conservation?”, “Help me follow up on offers I haven't acted on,” or “Draft introduction requests for my current raise.” Available results depend on your account, program assignment, and fundraising access.
 
 ## Other agents and MCP clients
 
-Start with [llms.txt](llms.txt), the portable [plugin manifest](plugin.json), and the four `skills/*/SKILL.md` files. Agent Skills use Markdown with YAML front matter and can be reused by compatible hosts. OpenAI-specific dependency and display metadata lives in each skill's `agents/openai.yaml`; Claude discovers the same skill instructions from `skills/`.
+Start with [llms.txt](llms.txt), the portable [plugin manifest](plugins/unreasonable-eco/plugin.json), and the four `plugins/unreasonable-eco/skills/*/SKILL.md` files. Agent Skills use Markdown with YAML front matter and can be reused by compatible hosts. OpenAI-specific dependency and display metadata lives in each skill's `agents/openai.yaml`; Claude discovers the same skill instructions from `skills/`.
 
 Connect using Streamable HTTP at `https://unreasonable.eco/mcp`. Use the host's supported OAuth flow and MCP discovery to retrieve the current tools and input schemas. Do not assume these files provide anonymous access, an API key, or a static tool catalog. This package has no local MCP executable and needs no Node or Python runtime to use.
 
@@ -73,14 +73,18 @@ Read-only discovery does not change records. Some Eco tools can update records w
 - [Review walkthrough](https://urg.ai/mcp-review-walkthrough)
 - Technical contact: tech@unreasonablegroup.com
 
+## Directory submission
+
+In the Claude submission Source step, select **plugins/unreasonable-eco** as the plugin folder and **main** as the branch (or a version tag). Re-validate after changing the folder or updating the commit. The repository root contains marketplace catalogs, maintainer tooling, and agent discovery documentation; it is not the installable plugin.
+
 ## Development and validation
 
-See [compatibility and release checks](docs/compatibility.md). Keep the version, identity, and logo references synchronized across all three manifests. The portable `mcp.json` uses `streamable-http`; Claude's `.mcp.json` uses `http` for the same transport. Neither file should contain credentials.
+See [compatibility and release checks](docs/compatibility.md). Keep the version, identity, and logo references synchronized across all three manifests. Inside the plugin folder, the portable `mcp.json` uses `streamable-http`; Claude's `.mcp.json` uses `http` for the same transport. Neither file should contain credentials.
 
 ```sh
 python3 -m pip install PyYAML==6.0.3
 python3 scripts/validate.py
-claude plugin validate .
+claude plugin validate ./plugins/unreasonable-eco
 python3 scripts/package.py /tmp/unreasonable-eco.zip
 ```
 

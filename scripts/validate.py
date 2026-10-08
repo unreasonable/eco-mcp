@@ -4,7 +4,8 @@ import re
 from pathlib import Path
 import yaml
 
-root = Path(__file__).resolve().parents[1]
+repository = Path(__file__).resolve().parents[1]
+root = repository / 'plugins/unreasonable-eco'
 def read(path):
     return json.loads((root / path).read_text())
 
@@ -51,17 +52,23 @@ for skill in skills:
         'description': 'Unreasonable Eco community and program tools',
         'transport': 'streamable_http', 'url': 'https://unreasonable.eco/mcp'}]
 
-catalog = read('.claude-plugin/marketplace.json')
-assert catalog['plugins'][0]['source'] == './'
+catalog = json.loads((repository / '.claude-plugin/marketplace.json').read_text())
+assert catalog['plugins'][0]['source'] == './plugins/unreasonable-eco'
 assert catalog['plugins'][0]['name'] == portable['name']
 assert catalog['plugins'][0]['version'] == portable['version']
-catalog = read('.agents/plugins/marketplace.json')
-assert catalog['plugins'][0]['source'] == {'source': 'local', 'path': './'}
+catalog = json.loads((repository / '.agents/plugins/marketplace.json').read_text())
+assert catalog['plugins'][0]['source'] == {'source': 'local', 'path': './plugins/unreasonable-eco'}
 assert catalog['plugins'][0]['name'] == portable['name']
 readme = re.sub(r'```.*?```', '', (root / 'README.md').read_text(), flags=re.S)
 assert len(readme.split()) >= 40
 
 seen = set()
+assert not (root / 'scripts').exists()
+assert not (root / 'docs').exists()
+assert not (root / 'llms.txt').exists()
+assert not (root / 'hooks').exists()
+assert not list(root.rglob('*.py'))
+assert 'scripts/' not in (root / 'README.md').read_text()
 files = [p for p in root.rglob('*') if '.git' not in p.relative_to(root).parts]
 assert len(files) < 512
 for path in files:

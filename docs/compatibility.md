@@ -2,7 +2,7 @@
 
 ## Package layout
 
-The repository root is the plugin folder. Claude reads `.claude-plugin/plugin.json`, `.mcp.json`, and `skills/`. OpenAI reads portable `plugin.json`, `mcp.json`, and the same `skills/`; `.codex-plugin/plugin.json` remains available for compatible older clients. Each host also has its own repository marketplace catalog. Both catalogs point to the root plugin, so the skills have one source of truth.
+The installable plugin folder is `plugins/unreasonable-eco`. Repository scripts, CI, marketplace catalogs, and agent discovery documents stay outside that folder. Claude reads `.claude-plugin/plugin.json`, `.mcp.json`, and `skills/`. OpenAI reads portable `plugin.json`, `mcp.json`, and the same `skills/`; `.codex-plugin/plugin.json` remains available for compatible older clients. Each host also has its own repository marketplace catalog. Both catalogs point to that plugin folder, so the skills have one source of truth.
 
 The skill instructions refer to tool names without a host-specific prefix. Hosts may namespace MCP tools differently. Resolve the named operation from the connected Eco server's current tool list and follow its actual input schema.
 
@@ -10,7 +10,7 @@ The skill instructions refer to tool names without a host-specific prefix. Hosts
 
 `scripts/validate.py` checks JSON parsing, shared identity and versions, MCP transports and endpoint agreement, local paths, four skill front matters and dependency metadata, marketplace sources, README length, license, prohibited system files, and portable filename/size limits. GitHub Actions runs it for pushes and pull requests. This is a focused package validator, not a replacement for either vendor's portal review.
 
-Run `claude plugin validate .` with an up-to-date Claude Code before release. Claude Code versions older than 2.1.281 may warn about directory listing fields such as `icon` and policy URLs; these fields are intentional. Do not delete them just to silence an older validator.
+Run `claude plugin validate ./plugins/unreasonable-eco` with an up-to-date Claude Code before release. Claude Code versions older than 2.1.281 may warn about directory listing fields such as `icon` and policy URLs; these fields are intentional. Do not delete them just to silence an older validator.
 
 ## Authenticated smoke tests before directory submission
 
@@ -28,7 +28,7 @@ GitHub publication makes the source and repository marketplaces public. It does 
 
 ## Release
 
-Update the version in all manifests and the Claude marketplace entry. Run validation, package with `python3 scripts/package.py /tmp/unreasonable-eco-VERSION.zip`, and attach that ZIP to a versioned GitHub release. The archive includes the plugin and documentation but excludes Git metadata, CI configuration, and maintainer scripts. Do not commit ZIPs into the plugin folder: Claude's directory scanner holds binary archives for review.
+Update the version in all manifests and the Claude marketplace entry. Run validation, package with `python3 scripts/package.py /tmp/unreasonable-eco-VERSION.zip`, and attach that ZIP to a versioned GitHub release. The archive includes only the installable plugin, its user README, license, and assets. It excludes repository discovery docs, marketplace catalogs, Git metadata, CI configuration, and maintainer scripts. Do not commit ZIPs into the plugin folder: Claude's directory scanner holds binary archives for review.
 
 ## Official references
 
@@ -37,3 +37,9 @@ Update the version in all manifests and the Claude marketplace entry. Run valida
 - [Claude marketplaces](https://code.claude.com/docs/en/plugin-marketplaces)
 - [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins)
 - [OpenAI skills](https://developers.openai.com/plugins/build/skills)
+
+## Claude asset-reference holds
+
+Version 0.1.8 placed maintenance scripts and discovery documentation inside the plugin folder. Claude's scanner followed their references to manifests and a README containing logo paths, producing six `UNREAD_ASSET_REFERENCED` holds. Version 0.1.9 moves the installable plugin to `plugins/unreasonable-eco`; maintenance scripts and repository discovery docs remain outside it. The plugin itself contains only manifests, MCP configuration, four skills, logo assets, a license, and a user README. No plugin command, hook, script, or setting executes an image. Logo references in manifest listing fields and Markdown images remain intentional.
+
+Select `plugins/unreasonable-eco` as the plugin folder in the Claude portal before re-validating. Local validation does not run Claude's directory policy scanner, so only a fresh portal result can confirm the holds are gone. Listing metadata warnings explicitly marked “No action needed” can remain.

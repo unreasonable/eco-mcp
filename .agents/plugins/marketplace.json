@@ -8,7 +8,7 @@
       "name": "unreasonable-eco",
       "source": {
         "source": "local",
-        "path": "./"
+        "path": "./plugins/unreasonable-eco"
       },
       "policy": {
         "installation": "AVAILABLE",

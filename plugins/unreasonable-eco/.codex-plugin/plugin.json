@@ -26,7 +26,7 @@
     "termsOfServiceURL": "https://unreasonable.eco/terms"
   },
   "name": "unreasonable-eco",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Connect to Unreasonable Eco to search the community, review commitments, explore programs, and manage supported Eco workflows.",
   "author": {
     "name": "Unreasonable Group",
@@ -98,7 +98,7 @@
         "demo_recording_url": "https://urg.ai/mcp-review-walkthrough"
       },
       "publication": {
-        "release_notes": "Publish four Eco workflow skills with Claude and OpenAI plugin manifests, marketplace catalogs, and installation documentation.",
+        "release_notes": "Separate the installable plugin from repository maintenance scripts and discovery docs to address Claude asset-reference policy holds. Preserve four workflows, MCP connection, and logo metadata.",
         "countries": []
       }
     }
