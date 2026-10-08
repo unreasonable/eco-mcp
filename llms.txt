@@ -1,0 +1,29 @@
+# Unreasonable Eco
+
+> Plugin and Agent Skills for the Unreasonable Eco community, compatible with Claude and OpenAI plugin hosts.
+
+## Start here
+
+- [Installation and behavior](https://github.com/unreasonable/eco-mcp/blob/main/README.md)
+- [Portable plugin manifest](https://github.com/unreasonable/eco-mcp/blob/main/plugin.json)
+- [MCP connection](https://github.com/unreasonable/eco-mcp/blob/main/mcp.json)
+- [Compatibility and validation](https://github.com/unreasonable/eco-mcp/blob/main/docs/compatibility.md)
+
+## Agent Skills
+
+- [Find the right people](https://github.com/unreasonable/eco-mcp/blob/main/skills/find-the-right-people/SKILL.md)
+- [Follow up on commitments](https://github.com/unreasonable/eco-mcp/blob/main/skills/follow-up-on-commitments/SKILL.md)
+- [Prepare for your program](https://github.com/unreasonable/eco-mcp/blob/main/skills/prepare-for-your-program/SKILL.md)
+- [Request fundraising introductions](https://github.com/unreasonable/eco-mcp/blob/main/skills/request-fundraising-introductions/SKILL.md)
+
+## Access
+
+The remote Streamable HTTP MCP endpoint is https://unreasonable.eco/mcp.
+Use your host's OAuth connection flow with an authorized Eco account, then discover current tools and schemas through MCP. Public source does not provide access to private data. Honor account visibility and explicit user authorization for writes. Drafts do not send messages.
+
+## Policies
+
+- [Support](https://unreasonable.eco/support)
+- [Privacy](https://unreasonable.eco/privacy)
+- [Terms](https://unreasonable.eco/terms)
+- [MIT license for plugin files](https://github.com/unreasonable/eco-mcp/blob/main/LICENSE)

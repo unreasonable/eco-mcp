@@ -1,0 +1,17 @@
+{
+  "name": "unreasonable",
+  "owner": {
+    "name": "Unreasonable Group",
+    "email": "tech@unreasonablegroup.com",
+    "url": "https://unreasonable.eco"
+  },
+  "plugins": [
+    {
+      "name": "unreasonable-eco",
+      "source": "./",
+      "description": "Connect to Unreasonable Eco to search the community, review commitments, explore programs, and manage supported Eco workflows.",
+      "version": "0.1.8"
+    }
+  ],
+  "description": "Unreasonable Eco community workflows and MCP connection."
+}

@@ -1,0 +1,109 @@
+{
+  "interface": {
+    "brandColor": "#41b8c2",
+    "brandColorDark": "#41b8c2",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "category": "Productivity",
+    "composerIcon": "./assets/eco-logo-0.1.2.png",
+    "composerIconDark": "./assets/eco-logo-0.1.2.png",
+    "defaultPrompt": [
+      "Find people and ventures in the Unreasonable community.",
+      "Show my Eco commitments and pending tasks.",
+      "Help me prepare for my upcoming Unreasonable program."
+    ],
+    "developerName": "Unreasonable Group",
+    "displayName": "Unreasonable Eco",
+    "logo": "./assets/eco-logo-0.1.2.png",
+    "logoDark": "./assets/eco-logo-0.1.2.png",
+    "longDescription": "Connect your Eco account to find people, ventures, and funders; review commitments and pending tasks; and explore programs and fundraising support. Staff tools are available according to your Eco account permissions.",
+    "shortDescription": "Your Unreasonable community",
+    "websiteURL": "https://unreasonable.eco",
+    "supportURL": "https://unreasonable.eco/support",
+    "privacyPolicyURL": "https://unreasonable.eco/privacy",
+    "termsOfServiceURL": "https://unreasonable.eco/terms"
+  },
+  "name": "unreasonable-eco",
+  "version": "0.1.8",
+  "description": "Connect to Unreasonable Eco to search the community, review commitments, explore programs, and manage supported Eco workflows.",
+  "author": {
+    "name": "Unreasonable Group",
+    "email": "tech@unreasonablegroup.com",
+    "url": "https://unreasonable.eco"
+  },
+  "keywords": [
+    "community",
+    "ventures",
+    "fundraising",
+    "programs",
+    "commitments"
+  ],
+  "homepage": "https://unreasonable.eco",
+  "mcpServers": "./.mcp.json",
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Directory name lookup. Setup: authorized Eco account with directory access.",
+              "prompt": "Find Paul Arterburn in the Unreasonable community.",
+              "tools_triggered": "search_records",
+              "expected_behavior": "Search people for Paul Arterburn; show only returned matches and their Eco profile references. If there is no visible match, report that result without inventing a person."
+            },
+            {
+              "description": "Thematic venture discovery. Setup: authorized Eco account with access to venture search.",
+              "prompt": "Find ventures working on water conservation.",
+              "tools_triggered": "semantic_search",
+              "expected_behavior": "Use semantic_search with search_type for ventures and a water conservation query. Explain each match using returned profile evidence, and preserve returned profile references."
+            },
+            {
+              "description": "Personal commitments review. Setup: dedicated reviewer account with sample received commitments.",
+              "prompt": "Show the commitments other people have made to help me.",
+              "tools_triggered": "get_commitments",
+              "expected_behavior": "Return commitments addressed to the authenticated account. Attribute benefactor, offer, and status to returned data; do not include commitments made by this account to other people, and do not mutate status."
+            },
+            {
+              "description": "Personal pending tasks. Setup: dedicated reviewer account with sample open tasks.",
+              "prompt": "What pending tasks do I have in Eco?",
+              "tools_triggered": "get_notifications",
+              "expected_behavior": "Summarize the authenticated account's returned pending tasks and available action links. Do not claim any task has been completed."
+            },
+            {
+              "description": "Upcoming program preparation. Setup: reviewer account assigned to an upcoming or in-residence sample program.",
+              "prompt": "Help me prepare for my upcoming Unreasonable program.",
+              "tools_triggered": "get_upcoming_program_context",
+              "expected_behavior": "Use the returned program context to identify the program, schedule, and outstanding onboarding steps with their links. If no program is assigned, explain that limitation without inventing one."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported deletion. Explain that Eco MCP does not support deleting commitments. Do not call update_commitment or any other mutating tool to approximate deletion.",
+              "prompt": "Delete all of the commitments people have made to me."
+            },
+            {
+              "description": "Unsupported sending. Explain that this plugin cannot send ticket email; drafting is distinct from sending. Do not call draft_ticket_reply as if it sent an email or invoke another mutating tool.",
+              "prompt": "Send an email to every person in my Eco search results right now."
+            },
+            {
+              "description": "Unsupported CRM writing. Explain that Copper CRM queries are read-only and sync_copper_record updates Eco only. Do not invoke query_copper_crm or sync_copper_record to claim a Copper record was changed.",
+              "prompt": "Change the company name of my Copper CRM contact to Example Company."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not process payments or support purchases.",
+        "demo_recording_url": "https://urg.ai/mcp-review-walkthrough"
+      },
+      "publication": {
+        "release_notes": "Publish four Eco workflow skills with Claude and OpenAI plugin manifests, marketplace catalogs, and installation documentation.",
+        "countries": []
+      }
+    }
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/unreasonable/eco-mcp",
+  "license": "MIT"
+}
