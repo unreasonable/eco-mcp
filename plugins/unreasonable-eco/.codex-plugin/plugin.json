@@ -12,7 +12,8 @@
     "defaultPrompt": [
       "Find people and ventures in the Unreasonable community.",
       "Show my Eco commitments and pending tasks.",
-      "Help me prepare for my upcoming Unreasonable program."
+      "Help me prepare for my upcoming Unreasonable program.",
+      "Who in my programs shares my personal interests?"
     ],
     "developerName": "Unreasonable Group",
     "displayName": "Unreasonable Eco",
@@ -26,7 +27,7 @@
     "termsOfServiceURL": "https://unreasonable.eco/terms"
   },
   "name": "unreasonable-eco",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Connect to Unreasonable Eco to search the community, review commitments, explore programs, and manage supported Eco workflows.",
   "author": {
     "name": "Unreasonable Group",
@@ -38,7 +39,8 @@
     "ventures",
     "fundraising",
     "programs",
-    "commitments"
+    "commitments",
+    "interests"
   ],
   "homepage": "https://unreasonable.eco",
   "mcpServers": "./.mcp.json",
@@ -76,6 +78,12 @@
               "prompt": "Help me prepare for my upcoming Unreasonable program.",
               "tools_triggered": "get_upcoming_program_context",
               "expected_behavior": "Use the returned program context to identify the program, schedule, and outstanding onboarding steps with their links. If no program is assigned, explain that limitation without inventing one."
+            },
+            {
+              "description": "Shared personal interests. Setup: authorized account whose profile states a personal interest and shares a program with another visible person.",
+              "prompt": "Who from my Eco programs shares my personal interests? Prefer people who live near me.",
+              "tools_triggered": "get_record_profile",
+              "expected_behavior": "Identify the authenticated user and read personal interests from their returned profile. Shortlist people who share one of their programs, cite the profile evidence, and rank closer returned locations higher. Do not substitute professional expertise, invent a shared interest, use a street address, or send a message."
             }
           ],
           "negative": [
@@ -98,7 +106,7 @@
         "demo_recording_url": "https://urg.ai/mcp-review-walkthrough"
       },
       "publication": {
-        "release_notes": "Separate the installable plugin from repository maintenance scripts and discovery docs to address Claude asset-reference policy holds. Preserve four workflows, MCP connection, and logo metadata.",
+        "release_notes": "Add the find-people-who-share-your-interests workflow for shared interests among people from the user's Eco programs, with a proximity boost. Preserve the existing workflows, MCP connection, and logo metadata.",
         "countries": []
       }
     }

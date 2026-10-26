@@ -2,16 +2,17 @@
 
 ![Unreasonable Eco](assets/eco-logo-0.1.2.png)
 
-Find people and ventures in your Unreasonable community, follow up on offers of help, prepare for your program, and draft fundraising introduction requests. This plugin connects Claude and OpenAI hosts to the hosted Eco MCP server at **https://unreasonable.eco/mcp**. An authorized Eco account is required; public installation does not grant community or staff access.
+Find people and ventures in your Unreasonable community, follow up on offers of help, prepare for your program, find people from your programs who share your personal interests, and draft fundraising introduction requests. This plugin connects Claude and OpenAI hosts to the hosted Eco MCP server at **https://unreasonable.eco/mcp**. An authorized Eco account is required; public installation does not grant community or staff access.
 
-## Four workflows
+## Five workflows
 
 - **Find the right people:** identify relevant community members using returned profile evidence, with clear reasons and source links.
 - **Follow up on commitments:** review commitments made to you and draft follow-ups. Record status changes only when you authorize them.
 - **Prepare for your program:** build a practical brief from your program schedule, announcements, onboarding steps, and participant context.
+- **Find people who share your interests:** find people from your programs who share your personal interests, with closer locations ranked higher.
 - **Request fundraising introductions:** review recommended funders and draft individual requests to the returned connectors. Record an introduction request only after you confirm it was sent.
 
-Describe what you need in plain language. For example: “Find people who could help with water conservation,” “Help me follow up on offers I haven't acted on,” or “Prepare me for my upcoming program.” Your account permissions and current program or fundraising context determine the results available.
+Describe what you need in plain language. For example: “Find people who could help with water conservation,” “Who from my programs shares my personal interests?”, or “Prepare me for my upcoming program.” Your account permissions and current program or fundraising context determine the results available.
 
 ## Installation and connection
 
@@ -22,7 +23,7 @@ claude plugin marketplace add unreasonable/eco-mcp
 claude plugin install unreasonable-eco@unreasonable
 ```
 
-Restart your session and use `/mcp` to connect your Eco account through the browser authorization flow. Invoke a workflow explicitly with `/unreasonable-eco:prepare-for-your-program`, or describe your task.
+Restart your session and use `/mcp` to connect your Eco account through the browser authorization flow. Invoke a workflow explicitly with `/unreasonable-eco:find-people-who-share-your-interests`, or describe your task.
 
 For supported OpenAI clients, add the repository marketplace with `codex plugin marketplace add unreasonable/eco-mcp`, then install Unreasonable Eco from the Unreasonable source in the client's plugin directory. A versioned ZIP is also available from the repository's GitHub Releases for supported upload flows. Marketplace availability varies by host. A custom MCP connection alone provides tools but does not install the bundled skills.
 

@@ -10,7 +10,7 @@
       "name": "unreasonable-eco",
       "source": "./plugins/unreasonable-eco",
       "description": "Connect to Unreasonable Eco to search the community, review commitments, explore programs, and manage supported Eco workflows.",
-      "version": "0.1.9"
+      "version": "0.1.10"
     }
   ],
   "description": "Unreasonable Eco community workflows and MCP connection."

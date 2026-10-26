@@ -2,9 +2,9 @@
 
 ![Unreasonable Eco](plugins/unreasonable-eco/assets/eco-logo-0.1.2.png)
 
-Connect Claude, ChatGPT, Codex, and other MCP clients to your Unreasonable community. Find people and ventures, follow up on offers of help, prepare for your program, and draft fundraising introduction requests using your Eco account's permissions.
+Connect Claude, ChatGPT, Codex, and other MCP clients to your Unreasonable community. Find people and ventures, follow up on offers of help, prepare for your program, find people from your programs who share your personal interests, and draft fundraising introduction requests using your Eco account's permissions.
 
-This repository contains the plugin configuration and four reusable Agent Skills. The MCP server is hosted by Unreasonable at **https://unreasonable.eco/mcp**; its application source and community data are not included here. An Eco account and authorization are required. Installing the public plugin does not grant access to private community data or staff tools.
+This repository contains the plugin configuration and five reusable Agent Skills. The MCP server is hosted by Unreasonable at **https://unreasonable.eco/mcp**; its application source and community data are not included here. An Eco account and authorization are required. Installing the public plugin does not grant access to private community data or staff tools.
 
 ## Install in Claude Code
 
@@ -18,7 +18,7 @@ claude plugin install unreasonable-eco@unreasonable
 Restart your session, open `/mcp`, and connect the Eco server through the browser authorization flow. The marketplace contains one plugin, `unreasonable-eco`. You can invoke a workflow explicitly, for example:
 
 ```text
-/unreasonable-eco:prepare-for-your-program
+/unreasonable-eco:find-people-who-share-your-interests
 ```
 
 To test a local checkout without installing it:
@@ -38,22 +38,23 @@ codex plugin marketplace add unreasonable/eco-mcp
 
 Open the plugin directory in your supported desktop client, choose the **Unreasonable** source, install **Unreasonable Eco**, and connect your Eco account. Marketplace support varies by client; this repository does not imply a public OpenAI Directory listing.
 
-For ChatGPT plugin upload or submission, download the versioned ZIP from [GitHub Releases](https://github.com/unreasonable/eco-mcp/releases). It includes the portable OpenAI manifest, compatibility manifests, four skills, and all logo assets. Use the plugin upload flow available to your account. A custom MCP connection to `https://unreasonable.eco/mcp` provides the tools, but does not by itself install these bundled skills.
+For ChatGPT plugin upload or submission, download the versioned ZIP from [GitHub Releases](https://github.com/unreasonable/eco-mcp/releases). It includes the portable OpenAI manifest, compatibility manifests, five skills, and all logo assets. Use the plugin upload flow available to your account. A custom MCP connection to `https://unreasonable.eco/mcp` provides the tools, but does not by itself install these bundled skills.
 
-In a host with the skills loaded, invoke `$find-the-right-people`, `$follow-up-on-commitments`, `$prepare-for-your-program`, or `$request-fundraising-introductions`, or describe the task in plain language.
+In a host with the skills loaded, invoke `$find-the-right-people`, `$follow-up-on-commitments`, `$prepare-for-your-program`, `$find-people-who-share-your-interests`, or `$request-fundraising-introductions`, or describe the task in plain language.
 
 ## Included workflows
 
 - [Find the right people](plugins/unreasonable-eco/skills/find-the-right-people/SKILL.md): build a shortlist using profile evidence and explain each person's relevance.
 - [Follow up on commitments](plugins/unreasonable-eco/skills/follow-up-on-commitments/SKILL.md): review offers made to you, prioritize follow-ups, and draft messages. Record changes only with your authorization.
 - [Prepare for your program](plugins/unreasonable-eco/skills/prepare-for-your-program/SKILL.md): summarize program context, outstanding onboarding, schedule, and useful conversations.
+- [Find people who share your interests](plugins/unreasonable-eco/skills/find-people-who-share-your-interests/SKILL.md): find people from your programs who share your personal interests, and rank closer locations higher.
 - [Request fundraising introductions](plugins/unreasonable-eco/skills/request-fundraising-introductions/SKILL.md): assess Eco's funder recommendations and draft requests to the returned connectors. Record a request only after you confirm it was sent.
 
-Try “Who in the community could help with water conservation?”, “Help me follow up on offers I haven't acted on,” or “Draft introduction requests for my current raise.” Available results depend on your account, program assignment, and fundraising access.
+Try “Who in the community could help with water conservation?”, “Who from my programs shares my personal interests?”, or “Draft introduction requests for my current raise.” Available results depend on your account, program assignment, and fundraising access.
 
 ## Other agents and MCP clients
 
-Start with [llms.txt](llms.txt), the portable [plugin manifest](plugins/unreasonable-eco/plugin.json), and the four `plugins/unreasonable-eco/skills/*/SKILL.md` files. Agent Skills use Markdown with YAML front matter and can be reused by compatible hosts. OpenAI-specific dependency and display metadata lives in each skill's `agents/openai.yaml`; Claude discovers the same skill instructions from `skills/`.
+Start with [llms.txt](llms.txt), the portable [plugin manifest](plugins/unreasonable-eco/plugin.json), and the five `plugins/unreasonable-eco/skills/*/SKILL.md` files. Agent Skills use Markdown with YAML front matter and can be reused by compatible hosts. OpenAI-specific dependency and display metadata lives in each skill's `agents/openai.yaml`; Claude discovers the same skill instructions from `skills/`.
 
 Connect using Streamable HTTP at `https://unreasonable.eco/mcp`. Use the host's supported OAuth flow and MCP discovery to retrieve the current tools and input schemas. Do not assume these files provide anonymous access, an API key, or a static tool catalog. This package has no local MCP executable and needs no Node or Python runtime to use.
 

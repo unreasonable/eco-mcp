@@ -14,6 +14,7 @@
 - [Find the right people](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/find-the-right-people/SKILL.md)
 - [Follow up on commitments](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/follow-up-on-commitments/SKILL.md)
 - [Prepare for your program](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/prepare-for-your-program/SKILL.md)
+- [Find people who share your interests](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/find-people-who-share-your-interests/SKILL.md)
 - [Request fundraising introductions](https://github.com/unreasonable/eco-mcp/blob/main/plugins/unreasonable-eco/skills/request-fundraising-introductions/SKILL.md)
 
 ## Access

@@ -37,7 +37,7 @@ for path, transport in [('mcp.json', 'streamable-http'), ('.mcp.json', 'http')]:
 assert codex['skills'] == './skills/' and codex['mcpServers'] == './.mcp.json'
 
 skills = sorted((root / 'skills').iterdir())
-assert len(skills) == 4
+assert len(skills) == 5
 for skill in skills:
     text = (skill / 'SKILL.md').read_text()
     assert text.startswith('---\n')
@@ -84,4 +84,4 @@ for path in files:
         assert path.suffix not in {'.zip', '.pdf', '.exe', '.ico'}, path
     if path.suffix == '.json':
         json.loads(path.read_text())
-print('Passed: manifests, transports, four skills, catalogs, assets, docs, and package layout.')
+print('Passed: manifests, transports, five skills, catalogs, assets, docs, and package layout.')
