@@ -19,10 +19,9 @@
         "composerIcon": "./assets/eco-logo-0.1.2.png",
         "composerIconDark": "./assets/eco-logo-0.1.2.png",
         "defaultPrompt": [
-          "Find people and ventures in the Unreasonable community.",
+          "Who in my programs shares my personal interests?",
           "Show my Eco commitments and pending tasks.",
-          "Help me prepare for my upcoming Unreasonable program.",
-          "Who in my programs shares my personal interests?"
+          "Help me prepare for my upcoming Unreasonable program."
         ],
         "developerName": "Unreasonable Group",
         "displayName": "Unreasonable Eco",
