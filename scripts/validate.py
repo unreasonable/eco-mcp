@@ -22,6 +22,13 @@ assert not {'skills', 'mcpServers', 'apps', 'interface'} & portable.keys()
 interface = portable['extensions']['com.openai']['interface']
 assert interface == codex['interface']
 assert len(interface['shortDescription']) <= 30
+review = portable['extensions']['com.openai']['review']
+assert review == codex['extensions']['com.openai']['review']
+# OpenAI's initial MCP review requires exactly five positive and three negative cases.
+assert len(review['test_cases']['positive']) == 5
+assert len(review['test_cases']['negative']) == 3
+for case in review['test_cases']['positive']:
+    assert case['description'] and case['prompt'] and case['tools_triggered'] and case['expected_behavior']
 for key in ['logo', 'logoDark', 'composerIcon', 'composerIconDark']:
     value = interface[key]
     assert value.startswith('./') and (root / value).is_file()

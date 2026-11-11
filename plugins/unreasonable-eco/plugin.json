@@ -50,16 +50,10 @@
               "expected_behavior": "Use semantic_search with search_type for ventures and a water conservation query. Explain each match using returned profile evidence, and preserve returned profile references."
             },
             {
-              "description": "Personal commitments review. Setup: dedicated reviewer account with sample received commitments.",
-              "prompt": "Show the commitments other people have made to help me.",
-              "tools_triggered": "get_commitments",
-              "expected_behavior": "Return commitments addressed to the authenticated account. Attribute benefactor, offer, and status to returned data; do not include commitments made by this account to other people, and do not mutate status."
-            },
-            {
-              "description": "Personal pending tasks. Setup: dedicated reviewer account with sample open tasks.",
-              "prompt": "What pending tasks do I have in Eco?",
-              "tools_triggered": "get_notifications",
-              "expected_behavior": "Summarize the authenticated account's returned pending tasks and available action links. Do not claim any task has been completed."
+              "description": "Personal commitments and pending tasks. Setup: dedicated reviewer account with sample received commitments and open tasks.",
+              "prompt": "Show my Eco commitments and pending tasks.",
+              "tools_triggered": "get_commitments, get_notifications",
+              "expected_behavior": "Return commitments addressed to the authenticated account and its pending tasks with available action links. Attribute benefactor, offer, and status to returned data; do not include commitments made by this account to other people, mutate status, or claim any task has been completed."
             },
             {
               "description": "Upcoming program preparation. Setup: reviewer account assigned to an upcoming or in-residence sample program.",
