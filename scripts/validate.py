@@ -62,6 +62,9 @@ assert catalog['plugins'][0]['name'] == portable['name']
 readme = re.sub(r'```.*?```', '', (root / 'README.md').read_text(), flags=re.S)
 assert len(readme.split()) >= 40
 
+TEXT_SUFFIXES = {'.md', '.txt', '.json', '.yaml', '.yml'}
+IMAGE_SUFFIXES = {'.png', '.jpg', '.jpeg', '.gif', '.webp'}
+TEXT_NAMES = {'LICENSE'}
 seen = set()
 assert not (root / 'scripts').exists()
 assert not (root / 'docs').exists()
@@ -81,7 +84,13 @@ for path in files:
     assert not re.fullmatch(r'(con|prn|aux|nul|com[1-9]|lpt[1-9])(\..*)?', path.name, re.I)
     if path.is_file():
         assert path.stat().st_size < 256 * 1024, path
-        assert path.suffix not in {'.zip', '.pdf', '.exe', '.ico'}, path
+        # Claude's directory refuses other file types from unverified organizations.
+        assert path.suffix.lower() in TEXT_SUFFIXES | IMAGE_SUFFIXES or path.name in TEXT_NAMES, path
+        data = path.read_bytes()
+        assert not data.startswith(b'#!'), path
+        if path.suffix.lower() not in IMAGE_SUFFIXES:
+            assert b'\x00' not in data, path
+            data.decode('utf-8')
     if path.suffix == '.json':
         json.loads(path.read_text())
 print('Passed: manifests, transports, five skills, catalogs, assets, docs, and package layout.')

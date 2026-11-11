@@ -94,7 +94,7 @@
         "demo_recording_url": "https://urg.ai/mcp-review-walkthrough"
       },
       "publication": {
-        "release_notes": "Add the find-people-who-share-your-interests workflow for shared interests among people from the user's Eco programs, with a proximity boost. Preserve the existing workflows, MCP connection, and logo metadata.",
+        "release_notes": "Add the find-people-who-share-your-interests workflow for shared interests among people from the user's Eco programs, with a proximity boost. Remove unused SVG icons so the plugin folder contains only Markdown, JSON, YAML, text, and PNG files. Preserve the existing workflows, MCP connection, and logo metadata.",
         "countries": []
       }
     }
@@ -109,7 +109,7 @@
     "interests"
   ],
   "name": "unreasonable-eco",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "repository": "https://github.com/unreasonable/eco-mcp",
   "license": "MIT"
 }
